@@ -5,7 +5,6 @@ import 'package:mynotes/services/auth/bloc/auth_bloc.dart';
 import 'package:mynotes/services/auth/bloc/auth_event.dart';
 import 'package:mynotes/services/auth/bloc/auth_state.dart';
 import 'package:mynotes/utilities/dialogs/error_dialog.dart';
-import 'package:mynotes/utilities/dialogs/loading_dialog.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -49,7 +48,7 @@ class _LoginViewState extends State<LoginView> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Login"),
-          backgroundColor: const Color.fromARGB(255, 109, 165, 211),
+          backgroundColor: Colors.amber,
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),

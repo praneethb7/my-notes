@@ -52,39 +52,52 @@ class _RegisterViewState extends State<RegisterView> {
           title: const Text("Register"),
           backgroundColor: const Color.fromARGB(255, 109, 165, 211),
         ),
-        body: Column(
-          children: [
-            TextField(
-              controller: _email,
-              decoration: InputDecoration(hintText: "Enter your email here"),
-              enableSuggestions: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-            ),
-            TextField(
-              controller: _password,
-              decoration: InputDecoration(hintText: "Enter your password here"),
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-            ),
-            TextButton(
-              onPressed: () async {
-                final email = _email.text;
-                final password = _password.text;
-                context.read<AuthBloc>().add(
-                  AuthEventRegister(email, password),
-                );
-              },
-              child: const Text("Register Now"),
-            ),
-            TextButton(
-              onPressed: () {
-                context.read<AuthBloc>().add(const AuthEventLogOut());
-              },
-              child: const Text("Already have an account? Login here!"),
-            ),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment:CrossAxisAlignment.start,
+            children: [
+              const Text('Create your Account to use MyNotes App!'),
+              TextField(
+                controller: _email,
+                decoration: InputDecoration(hintText: "Email"),
+                enableSuggestions: false,
+                autocorrect: false,
+                autofocus: true,
+                keyboardType: TextInputType.emailAddress,
+              ),
+              TextField(
+                controller: _password,
+                decoration: InputDecoration(hintText: "Password"),
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+              ),
+              Center(
+                child: Column(
+                  children: [
+                    TextButton(
+                      onPressed: () async {
+                        final email = _email.text;
+                        final password = _password.text;
+                        context.read<AuthBloc>().add(
+                          AuthEventRegister(email, password),
+                        );
+                      },
+                      child: const Text("Register Now"),
+                    ),
+                    TextButton(
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const AuthEventLogOut());
+                  },
+                  child: const Text("Already have an account? Login here!"),
+                ),
+                  ],
+                ),
+              ),
+              
+            ],
+          ),
         ),
       ),
     );
